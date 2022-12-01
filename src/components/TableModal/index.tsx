@@ -25,6 +25,7 @@ export function TableModal({visible, onClose, onSave}: TableModalProps) {
     <Modal
       visible={visible}
       transparent
+      onRequestClose={onClose}
       animationType='fade'>
       <Overlay behavior={Platform.OS === 'android' ? 'height' : 'padding'}>
         <ModalBody>
