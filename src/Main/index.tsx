@@ -110,7 +110,7 @@ export function Main() {
               ) : (
                 <CenteredContainer>
                   <Empty />
-                  <Text color='#666'>Nenhum produto foi encontrado!</Text>
+                  <Text color='#666' style={{marginTop: 24}}>Nenhum produto foi encontrado!</Text>
                 </CenteredContainer>
               )}
             </>
