@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 
 import { ActivityIndicator } from 'react-native';
 import { Button } from '../components/Button';
@@ -14,6 +13,7 @@ import { CartItem } from '../types/CartItem';
 import { Product } from '../types/Product';
 import { Container, CategoriesContainer, MenuContainer, Footer, FooterContainer, CenteredContainer } from './styles';
 import { Category } from '../types/Category';
+import { api } from '../utils/api';
 
 export function Main() {
   const [isTableModalVisible, setIsTableModalVisible] = useState(false);
@@ -85,8 +85,8 @@ export function Main() {
 
   useEffect(() => {
     Promise.all([
-      axios.get('http://192.168.1.109:3001/categories'),
-      axios.get('http://192.168.1.109:3001/products')
+      api.get('/categories'),
+      api.get('/products')
     ]).then(([categoriesResponse, productsResponse]) => {
       setCategories(categoriesResponse.data);
       setProducts(productsResponse.data);
