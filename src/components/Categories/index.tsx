@@ -8,15 +8,17 @@ import { Category, Icon } from './styles';
 
 interface Props {
   categories: ICategory[]
+  onSelectCategory: (categoryId: string) => Promise<void>
 }
 
-export function Categories({categories}: Props) {
+export function Categories({categories, onSelectCategory}: Props) {
 
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   function handleSelectCategory(categoryId: string) {
-    const category = selectedCategory === categoryId ? null : categoryId;
+    const category = selectedCategory === categoryId ? '' : categoryId;
     setSelectedCategory(category);
+    onSelectCategory(category);
   }
 
   return (
