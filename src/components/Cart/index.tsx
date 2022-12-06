@@ -38,14 +38,15 @@ export function Cart({cartItems, onAdd, onDecrement, onConfirmOrder, selectedTab
 
   const handleConfirmOrder = async () => {
     setIsLoading(true);
-    const payload = {
+
+    await api.post('/orders', {
       table: selectedTable,
-      product: cartItems.map((cartItem) => ({
+      products: cartItems.map((cartItem) => ({
         product: cartItem.product._id,
         quantity: cartItem.quantity
       }))
-    };
-    await api.post('/orders', payload);
+    });
+
     setIsLoading(false);
     setIsModalVisible(true);
   };
